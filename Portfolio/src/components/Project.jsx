@@ -28,9 +28,9 @@ const Project = () => {
     const fetchProjects = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/create-project/projects"
+          "https://my-portfolio-vvxz.onrender.com/api/create-project/projects"
         );
-        const shuffledProjects = shuffleArray(response.data.projects); // Shuffle the projects
+        const shuffledProjects = shuffleArray(response.data.projects);
         setPortfolioDetails(shuffledProjects);
       } catch (err) {
         setError(err.message);
