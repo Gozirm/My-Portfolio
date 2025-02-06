@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/profile.jpg";
+import logo from "../assets/photo.png";
 import signature from "../assets/signature.png";
 import headphone from "../assets/a9saem55a.png";
 import reactLogo from "../assets/software.png";
@@ -79,7 +79,7 @@ const HomePage = () => {
                 <img
                   src={logo}
                   alt="Logo"
-                  className="md:w-40 rounded-md md:mb-0 mb-4"
+                  className="w-96 md:h-64 rounded-md md:mb-0 mb-4"
                 />
                 <div className="space-y-2">
                   <h1 className="uppercase tracking-widest">Designer-Dev</h1>
@@ -88,8 +88,7 @@ const HomePage = () => {
                     <span>Joshua</span>
                   </h1>
                   <p>
-                    I am a Web Designer and Graphic Designer with few months of
-                    understanding to coding and 5 years+ in designing field.
+                  I am a Web Developer and Graphic Designer with over five years of design experience and several months of coding expertise.
                   </p>
                 </div>
               </div>
