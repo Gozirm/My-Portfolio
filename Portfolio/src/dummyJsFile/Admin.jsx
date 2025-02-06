@@ -49,7 +49,7 @@ const Admin = () => {
 
     try {
       const response = await axios.post(
-        "https://my-portfolio-vvxz.onrender.com//api/create-project/create",
+        "https://my-portfolio-vvxz.onrender.com/api/create-project/create",
         dataToSend,
         {
           headers: {

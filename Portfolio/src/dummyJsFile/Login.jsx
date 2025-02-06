@@ -18,7 +18,7 @@ const Login = () => {
     setIsSubmitting(true);
     try {
       const response = await axios.post(
-        "https://my-portfolio-vvxz.onrender.com//api/create-project/logedin",
+        "https://my-portfolio-vvxz.onrender.com/api/create-project/logedin",
         data
       );
       console.log("Login Successful:", response.data);

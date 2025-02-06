@@ -30,7 +30,7 @@ const Project = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "https://my-portfolio-vvxz.onrender.com//api/create-project/projects"
+          "https://my-portfolio-vvxz.onrender.com/api/create-project/projects"
         );
         const shuffledProjects = shuffleArray(response.data.projects);
         setPortfolioDetails(shuffledProjects);
