@@ -10,7 +10,7 @@ const Reviews = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:3000/api/create-project/reviews",
+        "https://my-portfolio-vvxz.onrender.comapi/create-project/reviews",
         {
           method: "POST",
           headers: {

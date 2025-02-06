@@ -34,7 +34,7 @@ const HomePage = () => {
     const fetchReviews = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/create-project/allreviews"
+          "https://my-portfolio-vvxz.onrender.comapi/create-project/allreviews"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch reviews");
