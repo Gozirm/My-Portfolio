@@ -3,6 +3,7 @@ import Masonry from "react-masonry-css";
 import arrowImg from "../assets/north_east_24dp_CCCCCC_FILL0_wght400_GRAD0_opsz24.svg";
 import axios from "axios";
 import { Link } from "react-router";
+import PreLoading from "./PreLoading";
 
 const Project = () => {
   const [portfolioDetails, setPortfolioDetails] = useState([]);
@@ -27,6 +28,7 @@ const Project = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           "https://my-portfolio-vvxz.onrender.com/api/create-project/projects"
         );
@@ -40,10 +42,20 @@ const Project = () => {
     };
 
     fetchProjects();
+
+    const handlePopState = () => {
+      window.location.reload();
+    };
+
+    window.onpopstate = handlePopState;
+
+    return () => {
+      window.onpopstate = null;
+    };
   }, []);
 
   if (loading) {
-    return <div className="text-white text-center">Loading...</div>;
+    return <div className="text-white text-center"><PreLoading/></div>;
   }
 
   if (error) {
@@ -65,7 +77,7 @@ const Project = () => {
             return (
               <div
                 key={index}
-                className="bg-gray-950 p-5 rounded-lg transition-transform transform hover:scale-105 mb-5 mx-2"
+                className="bg-zinc-900 p-5 rounded-lg transition-transform transform hover:scale-105 mb-5 mx-2"
               >
                 <div className="rounded-md mb-3">
                   <img

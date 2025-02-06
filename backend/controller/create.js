@@ -3,6 +3,7 @@ import createProject from "../models/createProject.js";
 import { v2 as cloudinary } from "cloudinary";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import Review from "../models/reviews.js";
 
 export const create = async (req, res) => {
   try {
@@ -103,26 +104,59 @@ export const loginAdmin = async (req, res) => {
     return res.status(400).json({ message: "Email and password are required" });
   }
   try {
-    // Check if admin exists
     const admin = await Admin.findOne({ email });
     if (!admin) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
-    // Verify password
     const isMatch = await bcrypt.compare(password, admin.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
-    // Generate a JWT token
     const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
 
-    res.status(200).json({success: true, message: "Login successful", token });
+    res.status(200).json({ success: true, message: "Login successful", token });
   } catch (error) {
     console.error("Error logging in admin:", error);
     res.status(500).json({ message: "Server error" });
+  }
+};
+
+export const reviewClients = async (req, res) => {
+  const { name, review } = req.body;
+  if (!name || !review) {
+    return res.status(400).json({ message: "Both fields must not be empty" });
+  }
+  try {
+    const reviewData = {
+      name,
+      review,
+    };
+    const newReview = await Review.create({
+      ...reviewData,
+    });
+    res.status(201).json({
+      message: "Thank you for sharing your review on my portfolio",
+      newReview,
+    });
+  } catch (error) {
+    console.error("Error creating Project:", error);
+    res
+      .status(500)
+      .json({ message: "Error creating Review", error: error.message });
+  }
+};
+export const getReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find();
+    res.status(200).json(reviews);
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+    res
+      .status(500)
+      .json({ message: "Error fetching reviews", error: error.message });
   }
 };

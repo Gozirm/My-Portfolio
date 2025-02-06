@@ -5,9 +5,9 @@ import Navbar from "./components/Navbar";
 import PreLoading from "./components/PreLoading";
 import React, { useEffect, useState } from "react";
 import Project from "./components/Project";
-import About from "./components/About";
 import Login from "./dummyJsFile/Login";
 import Admin from "./dummyJsFile/Admin";
+import Reviews from "./components/Reviews";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -34,7 +34,7 @@ function App() {
               }
             >
               <Route path="/project" element={<Project />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/reviews" element={<Reviews />} />
             </Route>
             <Route path="/gozirim-admin" element={<Login />} />
             <Route path="/gozirim-admin-admin" element={<Admin />} />

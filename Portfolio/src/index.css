@@ -4,9 +4,8 @@
 
 .main {
   font-family: "Space Grotesk", serif;
-  background-image: url("../src/assets/pawel-czerwinski-PSGucQPKe0c-unsplash.jpg");
+  background-color: black;
   min-height: 100vh;
-  background-size: cover;
 }
 
 .loader {
@@ -19,6 +18,10 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
